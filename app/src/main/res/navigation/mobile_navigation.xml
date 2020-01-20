@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_internal">
+
+    <fragment
+        android:id="@+id/navigation_internal"
+        android:name="com.ailoitte.scopedstorageexample.ui.internal_storage.InternalStoragePermissionFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_internal_storage" />
+
+    <fragment
+        android:id="@+id/navigation_no_permission"
+        android:name="com.ailoitte.scopedstorageexample.ui.external_no_permission.ExternalStorageNoPermissionFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_external_no_permission" />
+
+    <fragment
+        android:id="@+id/navigation_less_than_q"
+        android:name="com.ailoitte.scopedstorageexample.ui.shared_storage_permission_required_less_q.SharedStoragePermissionRequiredLessQFragment"
+        android:label="@string/permission_less_than_q"
+        tools:layout="@layout/fragment_shared_storage_permission_required_less_q" />
+
+    <fragment
+        android:id="@+id/navigation_greater_than_q"
+        android:name="com.ailoitte.scopedstorageexample.ui.shared_storage_permission_required_greater_q.SharedStoragePermissionRequiredGreaterQFragment"
+        android:label="@string/permission_greater_than_q"
+        tools:layout="@layout/fragment_shared_storage_permission_required_greater_q" />
+</navigation>
