@@ -10,9 +10,9 @@
     <string name="internal_storage_description">1. Possible without Read / Write permission\n2. Storage files disappear when app is deleted\n3. Read / Write impossible in other apps</string>
     <string name="external_storage_without_permission">Emulated External Storage without permission\n(API 19+)</string>
     <string name="external_storage_description">1. Without Read / Write permission\n2. Store files disappear when you delete an app\n3. Read / Write in other apps</string>
-    <string name="external_shared_storage_pre_q">External Shared Storage\n(Permission Required &lt; Q)</string>
+    <string name="external_storage_no_permission_heading">External Storage\n(No Permission Required)</string>
     <string name="external_shared_storage_post_p">External Shared Storage\n(No Permission Required &gt; Q)</string>
-    <string name="external_shared_storage_description_pre_q">1. Impossible without Read / Write Permission\n2. Deleting apps doesn\'t disappears storage files\n3. Read / Write in other apps</string>
+    <string name="external_storage_no_permission_description">1. No Read / Write Permission required\n2. Deleting apps doesn\'t disappears storage files\n3. Read / Write in other apps</string>
     <string name="external_shared_storage_description_post_p">1. No Read / Write Permission\n2. Deleting apps doesn\'t disappears storage files\n3. Read / Write in other apps</string>
     <string name="external_storage_without_permission_document_tree_heading">External Storage without permission\n(API 21+)\nDocument Tree</string>
     <string name="external_storage_without_permission_document_tree_desc">1. Possible without Read / Write Permission\n2. Deleting app doesn\'t disappears storage files\n3. Read / Write in other apps\n4. Able to read/write nested Folders &amp; Files</string>

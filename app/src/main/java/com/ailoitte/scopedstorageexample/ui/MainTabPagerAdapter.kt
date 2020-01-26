@@ -7,20 +7,20 @@ import com.ailoitte.scopedstorageexample.ui.external_no_permission.ExternalStora
 import com.ailoitte.scopedstorageexample.ui.external_no_permission_q_document_tree.QDocumentTreeFragment
 import com.ailoitte.scopedstorageexample.ui.internal_storage.InternalStoragePermissionFragment
 import com.ailoitte.scopedstorageexample.ui.shared_storage_no_permission_required_greater_q.SharedStorageNoPermissionRequiredGreaterQFragment
-import com.ailoitte.scopedstorageexample.ui.shared_storage_permission_required_less_q.SharedStoragePermissionRequiredLessQFragment
+import com.ailoitte.scopedstorageexample.ui.shared_storage_permission_required_less_q.ExternalStorageNoPermissionRequiredFragment
 
 /**
  * @author Rohan Kandwal on 2020-01-20.
  */
 class MainTabPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
 
-    private val title = arrayListOf("Internal Storage", "Emulated External Storage w/o Permission", "External Shared Storage < Q", "External Shared Storage >= Q", "External Shared Storage >= Q Tree")
+    private val title = arrayListOf("Internal Storage", "Emulated External Storage w/o Permission", "External Storage no permission", "External Shared Storage >= Q", "External Shared Storage >= Q Tree")
 
     override fun getItem(position: Int): Fragment {
         return when(position) {
             0 -> InternalStoragePermissionFragment()
             1 -> ExternalStorageNoPermissionFragment()
-            2 -> SharedStoragePermissionRequiredLessQFragment()
+            2 -> ExternalStorageNoPermissionRequiredFragment()
             3 -> SharedStorageNoPermissionRequiredGreaterQFragment()
             4 -> QDocumentTreeFragment()
             else -> Fragment()

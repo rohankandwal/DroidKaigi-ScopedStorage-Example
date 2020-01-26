@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_less_than_q"
-        android:name="com.ailoitte.scopedstorageexample.ui.shared_storage_permission_required_less_q.SharedStoragePermissionRequiredLessQFragment"
+        android:name="com.ailoitte.scopedstorageexample.ui.shared_storage_permission_required_less_q.ExternalStorageNoPermissionRequiredFragment"
         android:label="@string/permission_less_than_q"
         tools:layout="@layout/fragment_shared_storage_permission_required_less_q" />
 

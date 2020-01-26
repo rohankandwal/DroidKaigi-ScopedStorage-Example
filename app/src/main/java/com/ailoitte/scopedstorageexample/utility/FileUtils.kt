@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import java.io.*
 
 
@@ -16,6 +17,8 @@ import java.io.*
  * Extension Function to create a new file
  */
 fun File.createFile(data: String) {
+//    data.replace("external_shared_storage_permission_required.text", "")
+    Log.d("FileUtils", this.listFiles()?.toString() ?: "Unknown")
     var fos: FileOutputStream? = null
     try {
         fos = FileOutputStream(this.path)
