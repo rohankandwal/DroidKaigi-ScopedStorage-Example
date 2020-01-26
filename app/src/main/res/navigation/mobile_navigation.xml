@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_greater_than_q"
-        android:name="com.ailoitte.scopedstorageexample.ui.shared_storage_permission_required_greater_q.SharedStoragePermissionRequiredGreaterQFragment"
+        android:name="com.ailoitte.scopedstorageexample.ui.shared_storage_no_permission_required_greater_q.SharedStorageNoPermissionRequiredGreaterQFragment"
         android:label="@string/permission_greater_than_q"
-        tools:layout="@layout/fragment_shared_storage_permission_required_greater_q" />
+        tools:layout="@layout/fragment_shared_storage_no_permission_required_greater_q" />
 </navigation>

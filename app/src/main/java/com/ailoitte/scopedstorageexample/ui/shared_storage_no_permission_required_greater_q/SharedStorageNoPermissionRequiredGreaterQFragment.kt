@@ -1,4 +1,4 @@
-package com.ailoitte.scopedstorageexample.ui.shared_storage_permission_required_greater_q
+package com.ailoitte.scopedstorageexample.ui.shared_storage_no_permission_required_greater_q
 
 import android.app.Activity
 import android.content.Intent
@@ -12,11 +12,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.ailoitte.scopedstorageexample.R
-import kotlinx.android.synthetic.main.fragment_shared_storage_permission_required_greater_q.*
+import com.ailoitte.scopedstorageexample.utility.readFileContent
+import kotlinx.android.synthetic.main.fragment_shared_storage_no_permission_required_greater_q.*
 import java.io.*
 
 
-class SharedStoragePermissionRequiredGreaterQFragment : Fragment() {
+class SharedStorageNoPermissionRequiredGreaterQFragment : Fragment() {
 
     private val CREATE_REQUEST_CODE = 40
     private val OPEN_REQUEST_CODE = 41
@@ -34,7 +35,7 @@ class SharedStoragePermissionRequiredGreaterQFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(
-            R.layout.fragment_shared_storage_permission_required_greater_q,
+            R.layout.fragment_shared_storage_no_permission_required_greater_q,
             container,
             false
         )
@@ -92,30 +93,6 @@ class SharedStoragePermissionRequiredGreaterQFragment : Fragment() {
         }
     }
 
-
-
-    @Throws(IOException::class)
-    private fun readFileContent(uri: Uri): String? {
-        activity?.contentResolver?.openInputStream(uri)?.let {
-            val reader = BufferedReader(
-                InputStreamReader(
-                    it
-                )
-            )
-            val stringBuilder = StringBuilder()
-            var currentline: String = ""
-            while (reader.readLine()?.also {
-                    currentline = it
-                } != null
-            ) {
-                stringBuilder.append(currentline + "\n")
-            }
-            it.close()
-            return stringBuilder.toString()
-        }
-        return null
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
@@ -128,7 +105,7 @@ class SharedStoragePermissionRequiredGreaterQFragment : Fragment() {
             } else if (requestCode == OPEN_REQUEST_CODE) {
                 if (data != null && data.data != null) {
                     try {
-                        val content = readFileContent(data.data!!)
+                        val content = data.data!!.readFileContent(activity!!.contentResolver)
                         Toast.makeText(activity, content, Toast.LENGTH_LONG).show()
                     } catch (e: IOException) {
                         // Handle error here

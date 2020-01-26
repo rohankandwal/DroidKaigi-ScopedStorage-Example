@@ -1,5 +1,9 @@
 package com.ailoitte.scopedstorageexample.utility
 
+import android.content.ContentResolver
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.util.Log
 import java.io.*
 
@@ -48,4 +52,44 @@ fun File.readFile(): String {
         return (e.message ?: "IOException occurred")
     }
     return text.toString()
+}
+
+fun File.obtainDurablePermission(resolver: ContentResolver, document: Uri): Boolean {
+    var weHaveDurablePermission = false
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        val perms =
+            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+        try {
+            resolver.takePersistableUriPermission(document, perms)
+            for (perm in resolver.persistedUriPermissions) {
+                if (perm.uri == document) {
+                    weHaveDurablePermission = true
+                }
+            }
+        } catch (e: SecurityException) { // OK, we were not offered any persistable permissions
+        }
+    }
+    return weHaveDurablePermission
+}
+
+@Throws(IOException::class)
+fun Uri.readFileContent(contentResolver: ContentResolver): String? {
+    contentResolver.openInputStream(this)?.let {
+        val reader = BufferedReader(
+            InputStreamReader(
+                it
+            )
+        )
+        val stringBuilder = StringBuilder()
+        var currentline: String = ""
+        while (reader.readLine()?.also {
+                currentline = it
+            } != null
+        ) {
+            stringBuilder.append(currentline + "\n")
+        }
+        it.close()
+        return stringBuilder.toString()
+    }
+    return null
 }
